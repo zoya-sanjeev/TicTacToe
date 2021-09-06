@@ -13,7 +13,8 @@ public class TicTacToeGame {
 	
 	public static void playerInput() {
 		System.out.println("Enter Player move");
-		char playerMove=scanner.next().charAt(0);
+		char playerMove=scanner.next().toUpperCase().charAt(0);
+		char computerMove=playerMove=='X'?'O':'X';
 	}
 
 	public static void main(String[] args) {
