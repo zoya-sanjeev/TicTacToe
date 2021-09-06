@@ -78,51 +78,57 @@ public class TicTacToeGame {
 		return true;
 	}
 	
-	public static boolean checkIfWin(int index) {
+	public static boolean checkWinOrBlock(int index, char sign) {
 		switch(index) {
-		case 1: if(board[2]==computerSign && board[3]==computerSign || board[4]==computerSign && board[7]==computerSign || board[5]==computerSign && board[9]==computerSign)
+		case 1: if(board[2]==sign && board[3]==sign || board[4]==sign && board[7]==sign || board[5]==sign && board[9]==sign)
 				return true;
 				break;
-		case 2: if(board[1]==computerSign && board[3]==computerSign || board[5]==computerSign && board[8]==computerSign )
+		case 2: if(board[1]==sign && board[3]==sign || board[5]==sign && board[8]==sign )
 				return true;
 				break;
-		case 3: if(board[1]==computerSign && board[2]==computerSign || board[6]==computerSign && board[9]==computerSign || board[5]==computerSign && board[7]==computerSign)
+		case 3: if(board[1]==sign && board[2]==sign || board[6]==sign && board[9]==sign || board[5]==sign && board[7]==sign)
 				return true;
 				break;
-		case 4: if(board[1]==computerSign && board[7]==computerSign || board[5]==computerSign && board[6]==computerSign )
+		case 4: if(board[1]==sign && board[7]==sign || board[5]==sign && board[6]==sign )
 				return true;
 				break;
-		case 5: if(board[1]==computerSign && board[9]==computerSign || board[2]==computerSign && board[8]==computerSign || board[3]==computerSign && board[7]==computerSign
-				|| board[6]==computerSign && board[4]==computerSign)
+		case 5: if(board[1]==sign && board[9]==sign || board[2]==sign && board[8]==sign || board[3]==sign && board[7]==sign
+				|| board[6]==sign && board[4]==sign)
 				return true;
 				break;
-		case 6: if(board[3]==computerSign && board[9]==computerSign || board[4]==computerSign && board[5]==computerSign )
+		case 6: if(board[3]==sign && board[9]==sign || board[4]==sign && board[5]==sign )
 				return true;
 				break;
-		case 7: if(board[1]==computerSign && board[4]==computerSign || board[5]==computerSign && board[3]==computerSign || board[8]==computerSign && board[9]==computerSign)
+		case 7: if(board[1]==sign && board[4]==sign || board[5]==sign && board[3]==sign || board[8]==sign && board[9]==sign)
 				return true;
 				break;
-		case 8: if(board[2]==computerSign && board[5]==computerSign || board[7]==computerSign && board[9]==computerSign )
+		case 8: if(board[2]==sign && board[5]==sign || board[7]==sign && board[9]==sign )
 				return true;
 				break;
-		case 9: if(board[3]==computerSign && board[6]==computerSign || board[1]==computerSign && board[5]==computerSign || board[7]==computerSign && board[8]==computerSign)
+		case 9: if(board[3]==sign && board[6]==sign || board[1]==sign && board[5]==sign || board[7]==sign && board[8]==sign)
 				return true;
 				break;
 		
 		}
 		return false;
 	}
+
 	
 	public static void computerMove() {
 		int flagPlay=0;
 		for(int index=1;index<10;index++) {
-			if(checkIfWin(index)) {
+			if(checkWinOrBlock(index,computerSign)) {
 				board[index]=computerSign;	
 				flagPlay=1;
 			}
 		}
 		if(flagPlay==0) {
-			
+			for(int index=1;index<10;index++) {
+				if(checkWinOrBlock(index,playerSign)) {
+					board[index]=computerSign;	
+					flagPlay=1;
+				}
+			}
 		}
 		
 	}
