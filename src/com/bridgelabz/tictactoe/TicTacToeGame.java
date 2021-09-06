@@ -78,7 +78,52 @@ public class TicTacToeGame {
 		return true;
 	}
 	
-	public static void computerMove(char computerSign) {
+	public static boolean checkIfWin(int index) {
+		switch(index) {
+		case 1: if(board[2]==computerSign && board[3]==computerSign || board[4]==computerSign && board[7]==computerSign || board[5]==computerSign && board[9]==computerSign)
+				return true;
+				break;
+		case 2: if(board[1]==computerSign && board[3]==computerSign || board[5]==computerSign && board[8]==computerSign )
+				return true;
+				break;
+		case 3: if(board[1]==computerSign && board[2]==computerSign || board[6]==computerSign && board[9]==computerSign || board[5]==computerSign && board[7]==computerSign)
+				return true;
+				break;
+		case 4: if(board[1]==computerSign && board[7]==computerSign || board[5]==computerSign && board[6]==computerSign )
+				return true;
+				break;
+		case 5: if(board[1]==computerSign && board[9]==computerSign || board[2]==computerSign && board[8]==computerSign || board[3]==computerSign && board[7]==computerSign
+				|| board[6]==computerSign && board[4]==computerSign)
+				return true;
+				break;
+		case 6: if(board[3]==computerSign && board[9]==computerSign || board[4]==computerSign && board[5]==computerSign )
+				return true;
+				break;
+		case 7: if(board[1]==computerSign && board[4]==computerSign || board[5]==computerSign && board[3]==computerSign || board[8]==computerSign && board[9]==computerSign)
+				return true;
+				break;
+		case 8: if(board[2]==computerSign && board[5]==computerSign || board[7]==computerSign && board[9]==computerSign )
+				return true;
+				break;
+		case 9: if(board[3]==computerSign && board[6]==computerSign || board[1]==computerSign && board[5]==computerSign || board[7]==computerSign && board[8]==computerSign)
+				return true;
+				break;
+		
+		}
+		return false;
+	}
+	
+	public static void computerMove() {
+		int flagPlay=0;
+		for(int index=1;index<10;index++) {
+			if(checkIfWin(index)) {
+				board[index]=computerSign;	
+				flagPlay=1;
+			}
+		}
+		if(flagPlay==0) {
+			
+		}
 		
 	}
 
