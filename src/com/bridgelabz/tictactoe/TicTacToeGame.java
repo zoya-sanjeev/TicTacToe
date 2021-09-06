@@ -171,20 +171,28 @@ public class TicTacToeGame {
 		assignSigns();
 		showBoard();
 		char playerFlag=toss();
-		while(!boardFull()) {
-			if(playerFlag==computerSign)
-				computerMove();
-			else
-				playerInput();
-			showBoard();
+		boolean play=true;
+		while(play) {
 			
-			if(checkWinner(playerFlag)) {
-				System.out.println(playerFlag+" Won");
-				break;
+			while(!boardFull()) {
+				
+				if(playerFlag==computerSign)
+					computerMove();
+				else
+					playerInput();
+				showBoard();
+			
+				if(checkWinner(playerFlag)) {
+					System.out.println(playerFlag+" Won");
+					break;
+				}
+				
+				playerFlag=playerFlag==computerSign?playerSign:computerSign;
+			
 			}
-			playerFlag=playerFlag==computerSign?playerSign:computerSign;
-			
-			
+			System.out.println("Play again?(Y/N)");
+			char input=scanner.next().toUpperCase().charAt(0);
+			play=input=='Y'?true:false;
 		}
 	}
 
