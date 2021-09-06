@@ -113,6 +113,18 @@ public class TicTacToeGame {
 		return false;
 	}
 
+	public static int takeCorner() {
+		if(board[1]==' ')
+			return 1;
+		else if(board[3]==' ')
+			return 3;
+		else if(board[7]==' ')
+			return 7;
+		else if(board[9]==' ')
+			return 9;
+		else
+			return -1;
+	}
 	
 	public static void computerMove() {
 		int flagPlay=0;
@@ -129,6 +141,11 @@ public class TicTacToeGame {
 					flagPlay=1;
 				}
 			}
+		}
+		if(flagPlay==0) {
+			int index=takeCorner();
+			if(index!=-1)
+				board[index]=computerSign;
 		}
 		
 	}
