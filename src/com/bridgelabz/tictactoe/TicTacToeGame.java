@@ -42,12 +42,19 @@ public class TicTacToeGame {
 		else
 			return false;
 	}
+	
+	public static char toss() {
+		if(Math.random()<0.5)
+			return 'X'	;
+		else
+			return 'O';
+				
+	}
 
 	public static void main(String[] args) {
 		assignSpace();
 		assignSigns();
 		showBoard();
-
 	}
 
 }
