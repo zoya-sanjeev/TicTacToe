@@ -34,6 +34,13 @@ public class TicTacToeGame {
 	public static void playerInput() {
 		System.out.println("Enter desired location(1-9");
 		int location=scanner.nextInt();
+		checkSpace(location);
+	}
+	public static boolean checkSpace(int index) {
+		if(board[index]==' ')
+			return true;
+		else
+			return false;
 	}
 
 	public static void main(String[] args) {
