@@ -24,7 +24,7 @@ public class TicTacToeGame {
 			if(board[index]==' ')
 				System.out.print("_ ");
 			else 
-				System.out.println(board[index]);
+				System.out.print(board[index]+ " ");
 			
 			if(index%3==0)
 				System.out.println();
@@ -34,7 +34,11 @@ public class TicTacToeGame {
 	public static void playerInput() {
 		System.out.println("Enter desired location(1-9");
 		int location=scanner.nextInt();
-		checkSpace(location);
+		if(checkSpace(location)) {
+			board[location]=playerSign;
+		}
+		else
+			System.out.println("Invalid input");
 	}
 	public static boolean checkSpace(int index) {
 		if(board[index]==' ')
@@ -166,6 +170,22 @@ public class TicTacToeGame {
 		assignSpace();
 		assignSigns();
 		showBoard();
+		char playerFlag=toss();
+		while(!boardFull()) {
+			if(playerFlag==computerSign)
+				computerMove();
+			else
+				playerInput();
+			showBoard();
+			
+			if(checkWinner(playerFlag)) {
+				System.out.println(playerFlag+" Won");
+				break;
+			}
+			playerFlag=playerFlag==computerSign?playerSign:computerSign;
+			
+			
+		}
 	}
 
 }
