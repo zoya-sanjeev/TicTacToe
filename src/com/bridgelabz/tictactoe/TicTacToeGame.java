@@ -9,7 +9,7 @@ public class TicTacToeGame {
 	static char computerSign;
 	
 	public static void assignSpace() {
-		for(int index=1;index<=board.length;index++)
+		for(int index=1;index<board.length;index++)
 			board[index]=' ';
 	}
 	
@@ -18,10 +18,24 @@ public class TicTacToeGame {
 		playerSign=scanner.next().toUpperCase().charAt(0);
 		computerSign=playerSign=='X'?'O':'X';
 	}
+	
+	public static void showBoard() {
+		for(int index=1;index<board.length;index++) {
+			if(board[index]==' ')
+				System.out.print("_ ");
+			else 
+				System.out.println(board[index]);
+			
+			if(index%3==0)
+				System.out.println();
+				
+		}
+	}
 
 	public static void main(String[] args) {
 		assignSpace();
 		assignSigns();
+		showBoard();
 
 	}
 
