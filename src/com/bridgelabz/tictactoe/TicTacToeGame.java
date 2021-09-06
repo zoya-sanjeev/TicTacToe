@@ -71,6 +71,16 @@ public class TicTacToeGame {
 		return false;
 		
 	}
+	public static boolean boardFull() {
+		for(int index=1;index<10;index++)
+			if(board[index]!='X'||board[index]!='O')
+				return false;
+		return true;
+	}
+	
+	public static void computerMove(char computerSign) {
+		
+	}
 
 	public static void main(String[] args) {
 		assignSpace();
